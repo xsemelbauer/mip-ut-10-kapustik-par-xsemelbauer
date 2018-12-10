@@ -112,29 +112,29 @@ void o() {
 	fclose(p_subor);
 }
 
-void n(char ***pole, int *pocz) {
+void n(char ***pole, int *pocet_zaznamov) {
 	FILE * p_subor = fopen("predaj.txt", "r");
 	if (p_subor == NULL) return NULL;
-	char r[50];
+	char riadok[50];
 	int i = 0,x = 1, y = 0,a = 0;
-	(*pocz) = 0;
+	(*pocet_zaznamov) = 0;
 
-	while ((fgets(r, sizeof(r), p_subor))) {
+	while ((fgets(r, sizeof(riadok), p_subor))) {
 		i++;
 		if ((i % 5) == 0) {
-			(*pocz)++;
+			(*poc_zaznamov)++;
 		}
 	}
-	(*pole) = (char*)malloc((*pocz) * sizeof(char)); //alokujem pole pre spz
-	for (a; a <= (*pocz); a++) {
+	(*pole) = (char*)malloc((*pocet_zaznamov) * sizeof(char)); //alokujem pole pre spz
+	for (a; a <= (*pocet_zaznamov); a++) {
 		((*pole))[a] = (char*)malloc(7 * sizeof(char));
 	}
 	rewind(p_subor); //zresetuje súbor
-	while ((fgets(r, sizeof(r), p_subor))) {
+	while ((fgets(riadok, sizeof(riadok), p_subor))) {
 		if (x == 6) {
 			x = 0;
 		}
-		if (r[0] == EOF) break;
+		if (riadok[0] == EOF) break;
 		switch (x) {
 		case 2:
 			strcpy((*pole)[y], r);
