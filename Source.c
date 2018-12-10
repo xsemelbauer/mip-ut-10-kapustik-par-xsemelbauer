@@ -148,17 +148,17 @@ void n(char ***pole, int *pocet_zaznamov) {
 
 }
 void s(char ***pole,int pocz) {
-	int b = 0;
-	for (b; b < pocz; b++) {
-		printf("%c%c %c%c%c %c%c\n", (*pole)[b][0], (*pole)[b][1], (*pole)[b][2], (*pole)[b][3], (*pole)[b][4], (*pole)[b][5], (*pole)[b][6]);
+	int znak;
+	for (znak =0; znak < pocet_zaznamov; znak++) {
+		printf("%c%c %c%c%c %c%c\n", (*pole)[znak][0], (*pole)[znak][1], (*pole)[znak][2], (*pole)[znak][3], (*pole)[znak][4], (*pole)[znak][5], (*pole)[znak][6]);
 	}
 
 }
 void p(char ***pole,int pocz) {
-	int b = 0;
-	for (b ; b < pocz; b++) {
-		if((*pole)[b][0] == (*pole)[b][6] && (*pole)[b][1] == (*pole)[b][5] && (*pole)[b][2] == (*pole)[b][4])
-			printf("%c%c\n", (*pole)[b][0], (*pole)[b][1]);
+	int znak;
+	for (znak ; znak < pocet_zaznamov; znak++) {
+		if((*pole)[znak][0] == (*pole)[znak][6] && (*pole)[znak][1] == (*pole)[znak][5] && (*pole)[znak][2] == (*pole)[znak][4])
+			printf("%c%c\n", (*pole)[znak][0], (*pole)[znak][1]);
 
 	}
 }
