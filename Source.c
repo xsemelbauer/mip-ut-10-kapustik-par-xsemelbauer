@@ -66,7 +66,7 @@ void vypis_zaznamov()() {
 	fclose(p_subor);
 }
 
-void o() {
+void odmeny_zamestnanci()() {
 	FILE * p_subor = fopen("predaj.txt", "r"); //otvorí subor
 	if (p_subor == NULL) return NULL;
 
@@ -112,7 +112,7 @@ void o() {
 	fclose(p_subor);
 }
 
-void n(char ***pole, int *pocet_zaznamov) {
+void vytvori_pole_spz(char ***pole, int *pocet_zaznamov) {
 	FILE * p_subor = fopen("predaj.txt", "r");
 	if (p_subor == NULL) return NULL;
 	char riadok[50];
@@ -147,14 +147,14 @@ void n(char ***pole, int *pocet_zaznamov) {
 	fclose(p_subor);
 
 }
-void s(char ***pole,int pocz) {
+void vypis_z_pola(char ***pole,int pocz) {
 	int znak;
 	for (znak =0; znak < pocet_zaznamov; znak++) {
 		printf("%c%c %c%c%c %c%c\n", (*pole)[znak][0], (*pole)[znak][1], (*pole)[znak][2], (*pole)[znak][3], (*pole)[znak][4], (*pole)[znak][5], (*pole)[znak][6]);
 	}
 
 }
-void p(char ***pole,int pocz) {
+void vypis_palindrom(char ***pole,int pocz) {
 	int znak;
 	for (znak ; znak < pocet_zaznamov; znak++) {
 		if((*pole)[znak][0] == (*pole)[znak][6] && (*pole)[znak][1] == (*pole)[znak][5] && (*pole)[znak][2] == (*pole)[znak][4])
@@ -181,13 +181,13 @@ int main()
 			break;
 		}
 		case 'v': {   // vypiše zoznam všetkých predajcov
-			v();
+			vypis_zaznamov();
 			pomocv++;
 			break;
 		}
 		case 'o': {  //vypíše meno,priezvisko,spz a odmenu pre zamestnanca
 			if (pomocv == 1) {
-				o();
+				odmeny_zamestnanci();
 				break;
 			}
 			else
@@ -197,7 +197,7 @@ int main()
 		}
 		case'n':    { // vytvorí pole z SPZ
 			if (pomocv == 1) {
-				n(&pole, &pocz);
+				vytvori_pole_spz(&pole, &pocet_zaznamov);
 				pomocpole++;
 				break;
 			}
@@ -206,7 +206,7 @@ int main()
 		}
 		case's': {   // vypiše SPZ s medzerami
 			if (pomocpole == 1) {
-				s(&pole, pocz);
+				vypis_z_pola(&pole, pocet_zaznamov);
 				break;
 			}
 			else
@@ -216,7 +216,7 @@ int main()
 		}
 		case'p': {     // vypíše SPZ,ktoré sú polyndromické
 			if (pomocpole == 1) {
-				p(&pole, pocz);
+				vypis_palindrom(&pole, pocet_zaznamov);
 				break;
 			}
 			else
